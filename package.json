@@ -14,7 +14,7 @@
     "yt-search",
     "downloader"
   ],
-  "author": "NEXY TEAM",
+  "author": "NEXY API TEAM",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",

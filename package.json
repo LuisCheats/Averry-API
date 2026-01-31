@@ -1,10 +1,11 @@
 {
   "name": "nexy-api-infrastructure",
-  "version": "1.0.0",
+  "version": "1.0",
   "description": "Infraestructura de API y Explorer para NEXY con metadatos reales",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "api",
@@ -13,7 +14,7 @@
     "yt-search",
     "downloader"
   ],
-  "author": "NEXY API TEAM",
+  "author": "NEXY TEAM",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
@@ -25,9 +26,13 @@
     "cheerio": "^1.0.0-rc.12",
     "mysql2": "^3.11.0",
     "moment-timezone": "^0.5.43",
-    "yt-search": "^2.10.4"
+    "yt-search": "^2.10.4",
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   },
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   }
 }

@@ -75,7 +75,7 @@
         {
           "name": "NSFW",
           "desc": "Get random high-quality NSFW waifu images",
-          "path": "/random/random-nsfw",
+          "path": "/random/waifu",
           "status": "ready"
         }
       ]

@@ -92,6 +92,27 @@
         }
       ]
     },
+    
+     {
+      "name": "Image Makers",
+      "items": [
+        {
+          "name": "BRAT Generator",
+          "desc": "Generate BRAT-style text images with customizable colors and backgrounds",
+          "path": "/maker/brat?text=",
+          "status": "ready",
+          "params": {
+            "text": "Text to be inserted into the BRAT image (required)"
+          }
+        },
+        {
+          "name": "TEST",
+          "desc": "Test",
+          "path": "/tools/upload",
+          "status": "ready"
+        }
+      ]
+    },
 
     {
       "name": "Search",

@@ -1,7 +1,7 @@
 module.exports = function(app) {
     async function anim() {
         try {
-            const data = await fetchJson(`https://api.waifu.pics/sfw/waifu`)
+            const data = await fetchJson(`https://api.waifu.pics/sfw/neko`)
             const response = await getBuffer(data.url)
             return response
         } catch (error) {

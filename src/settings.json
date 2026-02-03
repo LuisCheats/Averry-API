@@ -74,7 +74,7 @@
       "items": [
         {
           "name": "NSFW",
-          "desc": "Get NSFW waifu images",
+          "desc": "Get NSFW Neko images",
           "path": "/random/waifu",
           "status": "ready"
         }

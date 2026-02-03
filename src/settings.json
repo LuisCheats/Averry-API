@@ -104,12 +104,6 @@
           "params": {
             "text": "Text to be inserted into the BRAT image (required)"
           }
-        },
-        {
-          "name": "TEST",
-          "desc": "Test",
-          "path": "/tools/upload",
-          "status": "ready"
         }
       ]
     },

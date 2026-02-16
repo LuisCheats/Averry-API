@@ -18,15 +18,15 @@ function parseRateLimit(rateLimitString) {
   if (rateLimitString === 'unlimited') {
     return { maxRequests: Infinity, windowMs: 0 }
   }
-
+  
   const match = rateLimitString.match(/^(\d+)\/(minute|hour|day)$/)
   if (!match) {
     return { maxRequests: 50, windowMs: 60 * 1000 }
   }
-
+  
   const [, maxRequests, unit] = match
   let windowMs
-
+  
   switch (unit) {
     case 'minute':
       windowMs = 60 * 1000
@@ -40,84 +40,84 @@ function parseRateLimit(rateLimitString) {
     default:
       windowMs = 60 * 1000
   }
-
+  
   return { maxRequests: parseInt(maxRequests), windowMs }
 }
 
 function checkRateLimit(apikey) {
   const settings = loadSettings()
   if (!settings || !settings.apiSettings || !settings.apiSettings.apikey) return false
-
+  
   const apikeyConfig = settings.apiSettings.apikey[apikey]
   if (!apikeyConfig || !apikeyConfig.enabled) return false
-
+  
   if (apikeyConfig.rateLimit === 'unlimited') return true
-
+  
   const { maxRequests, windowMs } = parseRateLimit(apikeyConfig.rateLimit)
   const now = Date.now()
   const key = `${apikey}_${Math.floor(now / windowMs)}`
-
+  
   if (!rateLimitMap.has(key)) {
     rateLimitMap.set(key, { count: 0, resetTime: now + windowMs })
   }
-
+  
   const limitData = rateLimitMap.get(key)
   
   if (now > limitData.resetTime) {
     limitData.count = 0
     limitData.resetTime = now + windowMs
   }
-
+  
   if (limitData.count >= maxRequests) {
     return false
   }
-
+  
   limitData.count++
   return true
 }
 
 export function validateApiKey(req, res, next) {
   const { apikey } = req.query
-
+  
   if (!apikey) {
     const settings = loadSettings()
     return res.status(401).json({
       status: false,
-      creator: settings?.apiSettings?.creator || "Shadow'S demo",
+      creator: settings?.apiSettings?.creator || "Shadow's Byte",
       error: "API key required",
       message: "Please provide a valid API key in the query parameters"
     })
   }
-
+  
   const settings = loadSettings()
   
   if (!settings || !settings.apiSettings || !settings.apiSettings.apikey) {
     return res.status(500).json({
       status: false,
-      creator: settings?.apiSettings?.creator || "Shadow'S demo",
+      creator: settings?.apiSettings?.creator || "Shadow's Byte",
       error: "Server configuration error",
       message: "API key validation is not properly configured"
     })
   }
-
+  
   if (!settings.apiSettings.apikey[apikey]) {
     return res.status(403).json({
       status: false,
-      creator: settings?.apiSettings?.creator || "Shadow'S demo",
+      creator: settings?.apiSettings?.creator || "Shadow's Byte",
       error: "Invalid API key",
       message: "The provided API key is not valid or does not exist"
     })
   }
-
+  
   if (!checkRateLimit(apikey)) {
     return res.status(429).json({
       status: false,
-      creator: settings?.apiSettings?.creator || "Shadow'S demo",
+      creator: settings?.apiSettings?.creator || "Shadow.xyz",
       error: "Rate limit exceeded",
       message: "You have exceeded the rate limit for this API key"
     })
   }
-
+  
   next()
 }
 

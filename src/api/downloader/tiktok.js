@@ -220,7 +220,7 @@ export default (app) => {
     }
   }
 
-  app.get("/downloader/tiktok", createApiKeyMiddleware(), async (req, res) => {
+  app.get("/download/tiktok", createApiKeyMiddleware(), async (req, res) => {
     try {
       const { url } = req.query
 
@@ -258,7 +258,7 @@ export default (app) => {
     }
   })
 
-  app.post("/downloader/tiktok", createApiKeyMiddleware(), async (req, res) => {
+  app.post("/download/tiktok", createApiKeyMiddleware(), async (req, res) => {
     try {
       const { url } = req.body
 

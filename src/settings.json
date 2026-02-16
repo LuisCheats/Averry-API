@@ -1,6 +1,6 @@
 {
   "name": "C'arlos Api'S",
-  "version": "v7.1.0",
+  "version": "v1.0",
   "description": "Simple and easy to use API documentation.",
   "maintenance": {
     "enabled": false,
@@ -39,7 +39,7 @@
           "name": "LuminAI",
           "desc": "Advanced AI assistant powered by LuminAI for intelligent conversations",
           "path": "/ai/luminai?text=",
-          "status": "error",
+          "status": "ready",
           "params": {
             "text": "Text message for the AI to respond to"
           }
